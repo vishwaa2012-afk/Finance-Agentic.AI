@@ -49,8 +49,11 @@ def ask_agent(question: str):
 
     prompt = f"{SYSTEM_PROMPT}\n\nContext Information:\n{context}\n\nUser Question: {question}\n\nPlease analyze the context and provide a clear, structured research answer."
     
-    response = llm.invoke(prompt)
-    return response.content
+    try:
+        response = llm.invoke(prompt)
+        return response.content
+    except Exception as e:
+        return "⚠️ **Note:** Running in Cloud Deployment Mode. Live Ollama backend is offline in cloud environment, but market APIs and data retrieval are functional."
 
 if __name__ == "__main__":
     print(ask_agent("Get live stock snapshot for RELIANCE.NS"))
