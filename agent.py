@@ -57,4 +57,3 @@ def ask_agent(question: str):
 
 if __name__ == "__main__":
     print(ask_agent("Get live stock snapshot for RELIANCE.NS"))
-    
